@@ -1,0 +1,25 @@
+{
+  "name": "cs-go-market-api",
+  "version": "0.1.2",
+  "description": "A CSGO market API for finding current items and thier prices on the steam market",
+  "main": "API.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andyyym/CS-GO-Market-API.git"
+  },
+  "author": "Andrew morgan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Andyyym/CS-GO-Market-API/issues"
+  },
+  "homepage": "https://github.com/Andyyym/CS-GO-Market-API#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.7.0",
+    "request": "^2.88.2"
+  }
+}
