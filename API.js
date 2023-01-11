@@ -91,21 +91,26 @@ const setCacheData = (key, value) => {
 };
 
 app.get("/csgo-item/:itemName", async (req, res) => {
-  const itemName = req.params.itemName;
-  const currency = req.query.currency || "USD"; //defaulting to USD
+  try {
+    const itemName = req.params.itemName;
+    const currency = req.query.currency || "USD"; //defaulting to USD
 
-  // Check if the result is already in the cache
-  const cacheData = getCacheData(`${itemName}${currency}`);
-  if (cacheData) {
-    res.json(cacheData);
-    return;
+    // Check if the result is already in the cache
+    const cacheData = getCacheData(`${itemName}${currency}`);
+    if (cacheData) {
+      res.json(cacheData);
+      return;
+    }
+
+    const items = await fetchItemsFromAPI(itemName, currency);
+    res.json(items);
+
+    // set the result to cache
+    setCacheData(`${itemName}${currency}`, items);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Something went wrong, please try again later.");
   }
-
-  const items = await fetchItemsFromAPI(itemName, currency);
-  res.json(items);
-
-  // set the result to cache
-  setCacheData(`${itemName}${currency}`, items);
 });
 
 app.listen(3000, () => {
