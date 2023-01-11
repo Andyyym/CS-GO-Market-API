@@ -9,23 +9,25 @@ GET /csgo-item/:itemName
 
 ## Query Parameters
 
-`itemName:` The name of the item to search for.
-`currency (optional):` The currency to use for the price. Defaults to USD.
+- `itemName:` The name of the item to search for.
+- `currency (optional):` The currency to use for the price. Defaults to USD.
 
 ## Responses
 
 Success
+
 Status: 200 OK
 
 The response will be a JSON object containing an array of items that match the search criteria. Each item includes:
 
-`Name:` The name of the item.
-`[currency]:` The price of the item in the specified currency.
-`Listings:` The number of listings for the item on Steam.
-`BuffURL:` A link to the item on Steam.
-`Image:` A link to the image of the item.
+- `Name:` The name of the item.
+- `[currency]:` The price of the item in the specified currency.
+- `Listings:` The number of listings for the item on Steam.
+- `BuffURL:` A link to the item on Steam.
+- `Image:` A link to the image of the item.
 
 Error
+
 Status: 400 Bad Request
 
 If the request is invalid, the API will return a JSON object with an error field containing a description of the error.
