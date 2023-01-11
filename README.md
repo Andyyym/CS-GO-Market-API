@@ -42,11 +42,11 @@ API results are cached for one hour (3600 seconds).
 
 The API will return a 400 Bad Request status code and an error message if there's a problem with the request. This can happen if the item name is not provided, an = invalid currency is requested or any other error occurs during the processing of the request.
 
-- Limitations
+## Limitations
 
 The API is rate-limited to 50 requests per IP per 15 minutes. If you exceed the limit, the API will return a 429 Too Many Requests status code and an error message.
 
-- Local setup
+## Local setup
 
 - install the dependencies by running npm install
 - you can run the API by running node index.js or nodemon index.js
