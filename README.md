@@ -1,16 +1,18 @@
-CSGO Item API
+##CSGO Item API
+
 This API allows clients to search for items on the Steam market by item name and currency. The results include the item's name, price in the specified currency, number of listings, an image, and a link to the item on Steam.
 
-Endpoint
-
+##Endpoint
+```
 GET /csgo-item/:itemName
+```
 
-Query Parameters
+##Query Parameters
 
 itemName: The name of the item to search for.
 currency (optional): The currency to use for the price. Defaults to USD.
 
-Responses
+##Responses
 
 Success
 Status: 200 OK
@@ -28,13 +30,15 @@ Status: 400 Bad Request
 
 If the request is invalid, the API will return a JSON object with an error field containing a description of the error.
 
-Example
-
+##Example
+```
 GET /csgo-item/AK-47
-
+```
+```
 GET /csgo-item/AK-47?currency=ZAR
+```
 
-Implementation
+##Implementation
 
 To implement this API into your own code, you will need to:
 
