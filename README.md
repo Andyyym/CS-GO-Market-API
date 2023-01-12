@@ -10,16 +10,19 @@ GET /csgo-item/:itemName
 ## Parameters
 
 - ``itemName`` (required) - The name of the item to search for.
-- ``currency`` (optional) - The currency in which to return the prices. defaults to USD
+- ``currency`` (optional) - The currency in which to return the prices. Defaults to USD.
+- ``sort`` (optional) - The ability to sort requests by price in decending or ascending order. Defaults to asc
 
-## Example Request
+## Example Requests
 ```
 GET /csgo-item/AK-47
 ```
 ```
 GET /csgo-item/AK-47?currency=ZAR
 ```
-
+```
+GET /csgo-item/AK-47?currency=ZAR&sort=desc
+```
 ## Example Response
 ```
 [
