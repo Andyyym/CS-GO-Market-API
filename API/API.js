@@ -5,7 +5,7 @@ const cheerio = require("cheerio");
 const Currency = "https://public-api.pricempire.com/api/meta/getCurrencyRates";
 const Buff = "https://api.pricempire.com/v1/redirectBuff/";
 
-const fetchItemsFromAPI = async (itemName, currency) => {
+const fetchItemsFromAPI = async (itemName, currency, sort) => {
   return new Promise((resolve, reject) => {
     request(Currency, function (error, response, body) {
       if (error) {
@@ -52,6 +52,12 @@ const fetchItemsFromAPI = async (itemName, currency) => {
                 };
                 items.push(ItemSet);
               });
+
+              if (sort === "desc") {
+                items.sort((a, b) => b[currency] - a[currency]);
+              } else if (sort === "asc") {
+                items.sort((a, b) => a[currency] - b[currency]);
+              }
               resolve(items);
             }
           }
@@ -61,4 +67,4 @@ const fetchItemsFromAPI = async (itemName, currency) => {
   });
 };
 
-module.exports = {fetchItemsFromAPI}
+module.exports = { fetchItemsFromAPI };

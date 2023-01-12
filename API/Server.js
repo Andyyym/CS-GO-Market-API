@@ -1,7 +1,7 @@
 const express = require("express");
 const rateLimit = require("express-rate-limit");
 const app = express();
-const {fetchItemsFromAPI} = require('./API')
+const { fetchItemsFromAPI } = require("./API");
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 50, // limit each IP to 50 requests per windowMs
@@ -33,19 +33,19 @@ app.get("/csgo-item/:itemName", async (req, res) => {
   try {
     const itemName = req.params.itemName;
     const currency = req.query.currency || "USD"; //defaulting to USD
-
+    const sort = req.query.sort || "asc";
     // Check if the result is already in the cache
-    const cacheData = getCacheData(`${itemName}${currency}`);
+    const cacheData = getCacheData(`${itemName}${currency}${sort}`);
     if (cacheData) {
       res.json(cacheData);
       return;
     }
 
-    const items = await fetchItemsFromAPI(itemName, currency);
+    let items = await fetchItemsFromAPI(itemName, currency, sort);
     res.json(items);
 
     // set the result to cache
-    setCacheData(`${itemName}${currency}`, items);
+    setCacheData(`${itemName}${currency}${sort}`, items);
   } catch (error) {
     console.error(error);
     res.status(500).send("Something went wrong, please try again later.");
