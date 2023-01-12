@@ -2,7 +2,7 @@
   "name": "cs-go-market-api",
   "version": "0.1.2",
   "description": "A CSGO market API for finding current items and thier prices on the steam market",
-  "main": "API.js",
+  "main": "./API/Server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
