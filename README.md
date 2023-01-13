@@ -52,7 +52,7 @@ The API is rate-limited to 50 requests per IP per 15 minutes. If you exceed the 
 ## Local setup
 
 - install the dependencies by running npm install
-- you can run the API by running node ./API/API.js or node .
+- you can run the API by running node .
 - you can test the API by running http://localhost:3000/csgo-item/AK-47
 
 ## Deployment
